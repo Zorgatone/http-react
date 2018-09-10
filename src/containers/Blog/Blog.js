@@ -41,6 +41,7 @@ class Blog extends Component {
         clicked={this.postSelectedHandler.bind(this, post.id)}
       />
     ));
+
     return (
       <div>
         <section className="Posts">{posts}</section>
