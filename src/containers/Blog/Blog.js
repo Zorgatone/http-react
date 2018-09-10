@@ -29,8 +29,7 @@ class Blog extends Component {
         const updatedPosts = posts.map(post => ({ ...post, author: "Max" }));
         this.setState({ posts: updatedPosts });
       })
-      .catch(error => {
-        console.error(error);
+      .catch(() => {
         this.setState({ error: true });
       });
   }
