@@ -1,6 +1,8 @@
 import React, { Component } from "react";
+import { Route } from "react-router-dom";
 
 import Post from "../../../components/Post";
+import FullPost from "../FullPost";
 
 import axios from "../../../axios";
 
@@ -18,7 +20,7 @@ class Posts extends Component {
   }
 
   postSelectedHandler(id) {
-    this.props.history.push("/" + id);
+    this.props.history.push("/posts/" + id);
   }
 
   componentDidMount() {
@@ -48,7 +50,17 @@ class Posts extends Component {
         />
       ));
     }
-    return <section className="Posts">{posts}</section>;
+
+    return (
+      <div>
+        <section className="Posts">{posts}</section>
+        <Route
+          path={this.props.match.url + "/:id"}
+          exact
+          component={FullPost}
+        />
+      </div>
+    );
   }
 }
 
