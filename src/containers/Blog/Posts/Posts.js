@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 import Post from "../../../components/Post";
 
@@ -40,12 +41,13 @@ class Posts extends Component {
 
     if (!this.state.error) {
       posts = this.state.posts.map(post => (
-        <Post
-          key={post.id}
-          title={post.title}
-          author={post.author}
-          clicked={this.postSelectedHandler.bind(this, post.id)}
-        />
+        <Link to={"/" + post.id} key={post.id}>
+          <Post
+            title={post.title}
+            author={post.author}
+            clicked={this.postSelectedHandler.bind(this, post.id)}
+          />
+        </Link>
       ));
     }
     return <section className="Posts">{posts}</section>;
